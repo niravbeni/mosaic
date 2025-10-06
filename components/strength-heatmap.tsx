@@ -44,12 +44,12 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   }));
   
   return (
-    <div className="h-full min-h-[400px] md:min-h-[600px] lg:min-h-[400px]">
+    <div className="h-full min-h-[500px] md:min-h-[700px] lg:min-h-[500px]">
       <ResponsiveHeatMap
         data={heatmapData}
         margin={{ top: 160, right: 60, bottom: 54, left: 140 }}
         valueFormat=">-.0f"
-        forceSquare={true}
+        forceSquare={false}
         axisTop={{
           tickSize: 5,
           tickPadding: 5,
