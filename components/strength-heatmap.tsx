@@ -61,7 +61,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
         }}
         colors={{
           type: 'sequential',
-          scheme: 'oranges',
+          scheme: 'blues',
           minValue: 0,
           maxValue: 100,
         }}
