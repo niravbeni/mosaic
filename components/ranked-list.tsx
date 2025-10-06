@@ -30,8 +30,8 @@ export function RankedList<T extends StrengthMetrics & { [key: string]: any }>({
     .sort((a, b) => b.strengthIndex - a.strengthIndex);
   
   return (
-    <div className="relative h-[532px]">
-      <div className="space-y-2 h-full overflow-y-auto pb-4 scrollbar-always-visible">
+    <div className="relative h-[400px] sm:h-[480px] md:h-[532px]">
+      <div className="space-y-1.5 sm:space-y-2 h-full overflow-y-auto pb-4 scrollbar-always-visible">
         {sortedData.map((item, index) => {
         const itemName = item[nameKey];
         const isSelected = selectedItem === itemName;
@@ -44,25 +44,25 @@ export function RankedList<T extends StrengthMetrics & { [key: string]: any }>({
             } ${onItemClick ? 'cursor-pointer hover:bg-[#F87700]/10 hover:border-[#FFA040] hover:shadow-md' : ''}`}
             onClick={() => onItemClick?.(item)}
           >
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl font-bold text-muted-foreground w-8">
+            <CardContent className="p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-muted-foreground w-6 sm:w-8 flex-shrink-0">
                     {index + 1}
                   </span>
-                  <div>
-                    <p className="font-semibold">{itemName}</p>
-                    <p className="text-sm text-muted-foreground">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-sm sm:text-base truncate">{itemName}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
                       {item.totalDeals} deals
                     </p>
                   </div>
                 </div>
                 
-                <div className="text-right">
-                  <p className="text-2xl font-bold">
+                <div className="text-right flex-shrink-0">
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold">
                     {Math.round(item.strengthIndex)}
                   </p>
-                  <div className="text-xs text-muted-foreground space-y-0.5">
+                  <div className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5">
                     <p>Sign: {Math.round(item.signRate * 100)}%</p>
                     <p>Deliver: {Math.round(item.deliveryRate * 100)}%</p>
                   </div>

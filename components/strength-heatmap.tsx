@@ -10,7 +10,7 @@ interface StrengthHeatmapProps {
 export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="h-[498px] flex items-center justify-center text-muted-foreground">
+      <div className="h-[400px] sm:h-[450px] md:h-[498px] flex items-center justify-center text-muted-foreground">
         No data available
       </div>
     );
@@ -23,7 +23,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   // Additional guard: ensure we have both categories and offers
   if (categories.length === 0 || offers.length === 0) {
     return (
-      <div className="h-[498px] flex items-center justify-center text-muted-foreground">
+      <div className="h-[400px] sm:h-[450px] md:h-[498px] flex items-center justify-center text-muted-foreground">
         Insufficient data for heatmap
       </div>
     );
@@ -44,19 +44,19 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   }));
   
   return (
-    <div className="h-[498px]">
+    <div className="h-[400px] sm:h-[450px] md:h-[498px] w-full min-w-0">
       <ResponsiveHeatMap
         data={heatmapData}
-        margin={{ top: 160, right: 60, bottom: 54, left: 140 }}
+        margin={{ top: 100, right: 40, bottom: 40, left: 80 }}
         valueFormat=">-.0f"
         axisTop={{
-          tickSize: 5,
-          tickPadding: 5,
+          tickSize: 4,
+          tickPadding: 4,
           tickRotation: -45,
         }}
         axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
+          tickSize: 4,
+          tickPadding: 4,
           tickRotation: 0,
         }}
         colors={{
@@ -74,25 +74,25 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
           {
             anchor: 'bottom',
             translateX: 0,
-            translateY: 40,
-            length: 400,
-            thickness: 8,
+            translateY: 30,
+            length: 200,
+            thickness: 6,
             direction: 'row',
-            title: 'Strength Index →',
+            title: 'Strength →',
           },
         ]}
         theme={{
           text: {
-            fontSize: 11,
+            fontSize: 9,
           },
           tooltip: {
             container: {
               background: 'white',
               color: 'black',
-              fontSize: 12,
+              fontSize: 11,
               borderRadius: 4,
               boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              padding: '8px 12px',
+              padding: '6px 10px',
             },
           },
         }}

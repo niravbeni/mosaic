@@ -242,30 +242,32 @@ export default function StrengthsPage() {
         <Navbar onDatasetLoaded={handleDatasetLoaded} />
       
       {/* Dataset info header */}
-      <div className="border-b bg-background px-6 py-3">
+      <div className="border-b bg-background px-4 sm:px-6 py-2 sm:py-3">
         <div className="container mx-auto">
-          <div className="text-sm text-muted-foreground">
-            <p>
-              <strong>Dataset:</strong> {dataset.meta.fileName} •{' '}
-              <strong>Records:</strong> {dataset.records.length} •{' '}
-              <strong>Last Updated:</strong>{' '}
-              {new Date(dataset.meta.lastUpdated).toLocaleString()}
+          <div className="text-xs sm:text-sm text-muted-foreground">
+            <p className="flex flex-wrap gap-x-2 gap-y-1">
+              <span className="whitespace-nowrap"><strong>Dataset:</strong> {dataset.meta.fileName}</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="whitespace-nowrap"><strong>Records:</strong> {dataset.records.length}</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="whitespace-nowrap"><strong>Last Updated:</strong> {new Date(dataset.meta.lastUpdated).toLocaleString()}</span>
             </p>
           </div>
         </div>
       </div>
       
       {/* Slide navigation */}
-      <div className="border-b bg-muted/30 px-6 py-2">
+      <div className="border-b bg-muted/30 px-4 sm:px-6 py-2">
         <div className="container mx-auto">
-          <div className="flex gap-2 items-center justify-center flex-wrap">
+          <div className="flex gap-1.5 sm:gap-2 items-center justify-center flex-wrap">
             <Button
               variant={currentSlide === 0 ? 'default' : 'ghost'}
               size="sm"
               onClick={() => carouselApi?.scrollTo(0)}
               className={`text-xs font-semibold ${currentSlide === 0 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
-              Categories
+              <span className="hidden sm:inline">Categories</span>
+              <span className="sm:hidden">Cat.</span>
             </Button>
             <Button
               variant={currentSlide === 1 ? 'default' : 'ghost'}
@@ -289,7 +291,8 @@ export default function StrengthsPage() {
               onClick={() => carouselApi?.scrollTo(3)}
               className={`text-xs font-semibold ${currentSlide === 3 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
-              AI Analysis
+              <span className="hidden sm:inline">AI Analysis</span>
+              <span className="sm:hidden">AI</span>
             </Button>
           </div>
         </div>
@@ -310,17 +313,17 @@ export default function StrengthsPage() {
           <CarouselContent className="h-full">
             {/* Slide 1: Category Strengths + Category Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6">
                 <div className="container mx-auto h-full">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                    <Card className="lg:col-span-2 flex flex-col">
-                      <CardHeader>
-                        <CardTitle>Category Strengths</CardTitle>
-                        <CardDescription>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full">
+                    <Card className="lg:col-span-2 flex flex-col min-h-0">
+                      <CardHeader className="pb-2 sm:pb-4">
+                        <CardTitle className="text-lg sm:text-xl">Category Strengths</CardTitle>
+                        <CardDescription className="text-xs sm:text-sm">
                           Overall IDEO strengths by category
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1">
+                      <CardContent className="flex-1 min-h-0 overflow-hidden">
                         <CategoryRadar
                           data={categoryMetrics}
                           onCategoryClick={handleCategoryClick}
@@ -329,10 +332,10 @@ export default function StrengthsPage() {
                       </CardContent>
                     </Card>
                     
-                    <Card className="flex flex-col">
-                      <CardHeader>
-                        <CardTitle>Category Rankings</CardTitle>
-                        <CardDescription>
+                    <Card className="flex flex-col min-h-0">
+                      <CardHeader className="pb-2 sm:pb-4">
+                        <CardTitle className="text-lg sm:text-xl">Category Rankings</CardTitle>
+                        <CardDescription className="text-xs sm:text-sm">
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
@@ -352,15 +355,15 @@ export default function StrengthsPage() {
             
             {/* Slide 2: Offers + Offer Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6">
                 <div className="container mx-auto h-full">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                    <Card className="lg:col-span-2 flex flex-col">
-                      <CardHeader>
-                        <div className="flex items-center gap-3">
-                          <CardTitle className="text-nowrap">Offers in</CardTitle>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full">
+                    <Card className="lg:col-span-2 flex flex-col min-h-0">
+                      <CardHeader className="pb-2 sm:pb-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                          <CardTitle className="text-lg sm:text-xl whitespace-nowrap">Offers in</CardTitle>
                           <Select value={selectedCategory || undefined} onValueChange={setSelectedCategory}>
-                            <SelectTrigger className="w-[240px]">
+                            <SelectTrigger className="w-full sm:w-[240px]">
                               <SelectValue placeholder="Select a category" />
                             </SelectTrigger>
                             <SelectContent>
@@ -372,21 +375,21 @@ export default function StrengthsPage() {
                             </SelectContent>
                           </Select>
                         </div>
-                        <CardDescription>
+                        <CardDescription className="text-xs sm:text-sm">
                           Strength breakdown by offer
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1">
+                      <CardContent className="flex-1 min-h-0 overflow-hidden">
                         <OfferRadar
                           data={offerMetrics}
                         />
                       </CardContent>
                     </Card>
                     
-                    <Card className="flex flex-col">
-                      <CardHeader>
-                        <CardTitle>Offer Rankings</CardTitle>
-                        <CardDescription>
+                    <Card className="flex flex-col min-h-0">
+                      <CardHeader className="pb-2 sm:pb-4">
+                        <CardTitle className="text-lg sm:text-xl">Offer Rankings</CardTitle>
+                        <CardDescription className="text-xs sm:text-sm">
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
@@ -404,16 +407,16 @@ export default function StrengthsPage() {
             
             {/* Slide 3: Category × Offer Heatmap */}
             <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6">
                 <div className="container mx-auto h-full">
-                  <Card className="h-full flex flex-col">
-                    <CardHeader className="pb-2">
-                      <CardTitle>Category × Offer Heatmap</CardTitle>
-                      <CardDescription>
+                  <Card className="h-full flex flex-col min-h-0">
+                    <CardHeader className="pb-2 sm:pb-4">
+                      <CardTitle className="text-lg sm:text-xl">Category × Offer Heatmap</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm">
                         Strength index across all category and offer combinations
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1 pt-2 pb-4">
+                    <CardContent className="flex-1 pt-2 pb-4 min-h-0 overflow-auto">
                       <StrengthHeatmap data={heatmapData} />
                     </CardContent>
                   </Card>
@@ -423,7 +426,7 @@ export default function StrengthsPage() {
             
             {/* Slide 4: Combined AI Analysis */}
             <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6 flex items-center">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 flex items-center">
                 <div className="container mx-auto">
                   <AISlideCombined />
                 </div>
@@ -431,8 +434,8 @@ export default function StrengthsPage() {
             </CarouselItem>
           </CarouselContent>
           
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          <CarouselPrevious className="left-2 sm:left-4 h-8 w-8 sm:h-10 sm:w-10" />
+          <CarouselNext className="right-2 sm:right-4 h-8 w-8 sm:h-10 sm:w-10" />
         </Carousel>
       </main>
     </div>

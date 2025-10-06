@@ -12,7 +12,7 @@ interface CategoryRadarProps {
 export function CategoryRadar({ data, onCategoryClick, selectedCategory }: CategoryRadarProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="h-[532px] flex items-center justify-center text-muted-foreground">
+      <div className="h-[300px] sm:h-[400px] md:h-[532px] flex items-center justify-center text-muted-foreground">
         No data available
       </div>
     );
@@ -27,21 +27,21 @@ export function CategoryRadar({ data, onCategoryClick, selectedCategory }: Categ
     }));
   
   return (
-    <div className="h-[532px]">
+    <div className="h-[300px] sm:h-[400px] md:h-[532px] w-full">
       <ResponsiveRadar
         data={radarData}
         keys={['strength']}
         indexBy="category"
         maxValue={100}
-        margin={{ top: 70, right: 140, bottom: 70, left: 140 }}
+        margin={{ top: 40, right: 60, bottom: 40, left: 60 }}
         curve="linearClosed"
         borderWidth={2}
         borderColor={{ from: 'color' }}
         gridLevels={5}
         gridShape="circular"
-        gridLabelOffset={16}
+        gridLabelOffset={12}
         enableDots={true}
-        dotSize={8}
+        dotSize={6}
         dotColor={{ theme: 'background' }}
         dotBorderWidth={2}
         dotBorderColor={{ from: 'color' }}
@@ -59,16 +59,16 @@ export function CategoryRadar({ data, onCategoryClick, selectedCategory }: Categ
         }}
         theme={{
           text: {
-            fontSize: 12,
+            fontSize: 10,
           },
           tooltip: {
             container: {
               background: 'white',
               color: 'black',
-              fontSize: 12,
+              fontSize: 11,
               borderRadius: 4,
               boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              padding: '8px 12px',
+              padding: '6px 10px',
             },
           },
         }}

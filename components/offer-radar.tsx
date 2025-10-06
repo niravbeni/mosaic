@@ -35,7 +35,7 @@ const formatLabel = (label: string): string => {
 export function OfferRadar({ data, onOfferClick }: OfferRadarProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="h-[532px] flex items-center justify-center text-muted-foreground">
+      <div className="h-[300px] sm:h-[400px] md:h-[532px] flex items-center justify-center text-muted-foreground">
         Select a category to view offers
       </div>
     );
@@ -51,21 +51,21 @@ export function OfferRadar({ data, onOfferClick }: OfferRadarProps) {
     }));
   
   return (
-    <div className="h-[512px]">
+    <div className="h-[300px] sm:h-[400px] md:h-[512px] w-full">
       <ResponsiveRadar
         data={radarData}
         keys={['strength']}
         indexBy="offer"
         maxValue={100}
-        margin={{ top: 80, right: 160, bottom: 80, left: 160 }}
+        margin={{ top: 50, right: 70, bottom: 50, left: 70 }}
         curve="linearClosed"
         borderWidth={2}
         borderColor={{ from: 'color' }}
         gridLevels={5}
         gridShape="circular"
-        gridLabelOffset={16}
+        gridLabelOffset={12}
         enableDots={true}
-        dotSize={8}
+        dotSize={6}
         dotColor={{ theme: 'background' }}
         dotBorderWidth={2}
         dotBorderColor={{ from: 'color' }}
@@ -83,16 +83,16 @@ export function OfferRadar({ data, onOfferClick }: OfferRadarProps) {
         }}
         theme={{
           text: {
-            fontSize: 11,
+            fontSize: 9,
           },
           tooltip: {
             container: {
               background: 'white',
               color: 'black',
-              fontSize: 12,
+              fontSize: 11,
               borderRadius: 4,
               boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              padding: '8px 12px',
+              padding: '6px 10px',
             },
           },
         }}

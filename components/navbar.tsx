@@ -15,13 +15,13 @@ export function Navbar({ onDatasetLoaded }: NavbarProps) {
   
   return (
     <header className="border-b">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold">
+      <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 py-3 sm:py-4 px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
+          <h1 className="text-xl sm:text-2xl font-bold whitespace-nowrap">
             <span className="text-[#F87700]">IDEO</span> Mosaic
           </h1>
           
-          <nav className="flex items-center gap-2">
+          <nav className="flex items-center gap-2 flex-wrap">
             <Link href="/strengths">
               <Button
                 variant={pathname === '/strengths' ? 'default' : 'outline'}
