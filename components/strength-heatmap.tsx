@@ -49,6 +49,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
         data={heatmapData}
         margin={{ top: 160, right: 60, bottom: 54, left: 140 }}
         valueFormat=">-.0f"
+        forceSquare={false}
         axisTop={{
           tickSize: 5,
           tickPadding: 5,
@@ -60,8 +61,9 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
           tickRotation: 0,
         }}
         colors={{
-          type: 'sequential',
-          scheme: 'blues',
+          type: 'diverging',
+          scheme: 'red_yellow_green',
+          divergeAt: 0.5,
           minValue: 0,
           maxValue: 100,
         }}
