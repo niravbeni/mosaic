@@ -313,9 +313,9 @@ export default function StrengthsPage() {
           <CarouselContent className="h-full">
             {/* Slide 1: Category Strengths + Category Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-8 sm:pb-12 md:pb-16 overflow-y-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-16 sm:pb-20 md:pb-32 overflow-y-auto overflow-x-hidden">
                 <div className="container mx-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pb-8">
                     <Card className="lg:col-span-2">
                       <CardHeader className="pb-2 sm:pb-4">
                         <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Category Strengths</CardTitle>
@@ -355,9 +355,9 @@ export default function StrengthsPage() {
             
             {/* Slide 2: Offers + Offer Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-8 sm:pb-12 md:pb-16 overflow-y-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-16 sm:pb-20 md:pb-32 overflow-y-auto overflow-x-hidden">
                 <div className="container mx-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pb-8">
                     <Card className="lg:col-span-2">
                       <CardHeader className="pb-2 sm:pb-4">
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
@@ -407,8 +407,8 @@ export default function StrengthsPage() {
             
             {/* Slide 3: Category × Offer Heatmap */}
             <CarouselItem className="h-full">
-              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-8 sm:pb-12 md:pb-16 overflow-y-auto">
-                <div className="container mx-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-16 sm:pb-20 md:pb-32 overflow-y-auto overflow-x-hidden">
+                <div className="container mx-auto pb-8">
                   <Card>
                     <CardHeader className="pb-2 sm:pb-4">
                       <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Category × Offer Heatmap</CardTitle>
@@ -426,8 +426,8 @@ export default function StrengthsPage() {
             
             {/* Slide 4: Combined AI Analysis */}
             <CarouselItem className="h-full">
-              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-8 sm:pb-12 md:pb-16 overflow-y-auto">
-                <div className="container mx-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 pt-3 sm:pt-4 md:pt-6 pb-16 sm:pb-20 md:pb-32 overflow-y-auto overflow-x-hidden">
+                <div className="container mx-auto pb-8">
                   <AISlideCombined />
                 </div>
               </div>
