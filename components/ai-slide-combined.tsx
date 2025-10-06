@@ -10,7 +10,7 @@ export function AISlideCombined() {
   const { analysis, isLoading, error, regenerate } = useAnalysis();
 
   return (
-    <Card className="w-full h-[648px] flex flex-col">
+    <Card className="w-full h-[calc(100vh-200px)] md:h-[calc(100vh-260px)] lg:h-[648px] flex flex-col">
       <CardHeader className="pb-2 flex-shrink-0">
         <div className="flex items-center justify-between">
           <div>
@@ -53,7 +53,7 @@ export function AISlideCombined() {
 
         {!isLoading && analysis && (
           <>
-            <div className="space-y-8 max-h-[532px] overflow-y-auto pr-4 pb-8 scrollbar-always-visible">
+            <div className="space-y-8 h-full overflow-y-auto pr-4 pb-8 scrollbar-always-visible">
               {/* Executive Summary Section */}
               <section>
                 <div className="flex items-center gap-2 mb-3">

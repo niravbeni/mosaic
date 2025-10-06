@@ -238,7 +238,30 @@ export default function StrengthsPage() {
   
   return (
     <AIAnalysisProvider dataset={dataset}>
-      <div className="h-screen flex flex-col overflow-hidden">
+      {/* Mobile-only: Show message to switch to desktop */}
+      <div className="md:hidden h-screen flex items-center justify-center p-6 bg-gradient-to-br from-orange-50 to-white">
+        <div className="text-center max-w-md">
+          <div className="mb-6">
+            <h1 className="text-4xl font-bold mb-2">
+              <span className="text-[#F87700]">IDEO</span> Mosaic
+            </h1>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-[#F87700]/20">
+            <div className="text-6xl mb-4">💻</div>
+            <h2 className="text-2xl font-bold mb-3 text-gray-800">Desktop or Tablet Required</h2>
+            <p className="text-gray-600 mb-4">
+              IDEO Mosaic is optimized for tablet and desktop screens. 
+              Please switch to a larger device for the best experience.
+            </p>
+            <div className="text-sm text-gray-500">
+              Minimum recommended width: 768px
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tablet/Desktop view */}
+      <div className="hidden md:flex h-screen flex-col overflow-hidden">
         <Navbar onDatasetLoaded={handleDatasetLoaded} />
       
       {/* Dataset info header */}
@@ -297,22 +320,23 @@ export default function StrengthsPage() {
       
       {/* Carousel container */}
       <main className="flex-1 overflow-hidden relative">
-        <Carousel 
-          className="h-full w-full"
-          setApi={setCarouselApi}
-          opts={{
-            align: 'start',
-            loop: false,
-            watchDrag: true,
-            dragFree: false,
-          }}
-        >
-          <CarouselContent className="h-full">
+        <div className="h-full px-12 lg:px-16">
+          <Carousel 
+            className="h-full w-full"
+            setApi={setCarouselApi}
+            opts={{
+              align: 'start',
+              loop: false,
+              watchDrag: true,
+              dragFree: false,
+            }}
+          >
+            <CarouselContent className="h-full">
             {/* Slide 1: Category Strengths + Category Rankings */}
-            <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
-                <div className="container mx-auto h-full">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
+            <CarouselItem className="h-full overflow-y-auto overflow-x-hidden">
+              <div className="py-6">
+                <div className="container mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-max">
                     <Card className="lg:col-span-2 flex flex-col">
                       <CardHeader>
                         <CardTitle>Category Strengths</CardTitle>
@@ -320,7 +344,7 @@ export default function StrengthsPage() {
                           Overall IDEO strengths by category
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1">
+                      <CardContent className="min-h-[350px] lg:min-h-[500px]">
                         <CategoryRadar
                           data={categoryMetrics}
                           onCategoryClick={handleCategoryClick}
@@ -336,7 +360,7 @@ export default function StrengthsPage() {
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 overflow-hidden">
+                      <CardContent className="h-[150px] lg:h-auto overflow-hidden">
                         <RankedList
                           data={categoryMetrics}
                           nameKey="category"
@@ -351,10 +375,10 @@ export default function StrengthsPage() {
             </CarouselItem>
             
             {/* Slide 2: Offers + Offer Rankings */}
-            <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
-                <div className="container mx-auto h-full">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
+            <CarouselItem className="h-full overflow-y-auto overflow-x-hidden">
+              <div className="py-6">
+                <div className="container mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-max">
                     <Card className="lg:col-span-2 flex flex-col">
                       <CardHeader>
                         <div className="flex items-center gap-3">
@@ -376,7 +400,7 @@ export default function StrengthsPage() {
                           Strength breakdown by offer
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1">
+                      <CardContent className="min-h-[350px] lg:min-h-[500px]">
                         <OfferRadar
                           data={offerMetrics}
                         />
@@ -390,7 +414,7 @@ export default function StrengthsPage() {
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 overflow-hidden">
+                      <CardContent className="h-[150px] lg:h-auto overflow-hidden">
                         <RankedList
                           data={offerMetrics}
                           nameKey="offer"
@@ -403,18 +427,20 @@ export default function StrengthsPage() {
             </CarouselItem>
             
             {/* Slide 3: Category × Offer Heatmap */}
-            <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6">
+            <CarouselItem className="h-full overflow-y-auto overflow-x-hidden">
+              <div className="h-full py-6 pb-8">
                 <div className="container mx-auto h-full">
                   <Card className="h-full flex flex-col">
-                    <CardHeader className="pb-2">
+                    <CardHeader className="pb-2 flex-shrink-0">
                       <CardTitle>Category × Offer Heatmap</CardTitle>
                       <CardDescription>
                         Strength index across all category and offer combinations
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1 pt-2 pb-4">
-                      <StrengthHeatmap data={heatmapData} />
+                    <CardContent className="flex-1 pt-2 pb-4 overflow-hidden">
+                      <div className="h-full">
+                        <StrengthHeatmap data={heatmapData} />
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
@@ -422,20 +448,21 @@ export default function StrengthsPage() {
             </CarouselItem>
             
             {/* Slide 4: Combined AI Analysis */}
-            <CarouselItem className="h-full">
-              <div className="h-full px-6 py-6 flex items-center">
-                <div className="container mx-auto">
+            <CarouselItem className="h-full overflow-y-auto overflow-x-hidden">
+              <div className="py-6 pb-12">
+                <div className="container mx-auto flex items-start lg:items-center">
                   <AISlideCombined />
                 </div>
               </div>
             </CarouselItem>
-          </CarouselContent>
-          
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
-        </Carousel>
+            </CarouselContent>
+            
+            <CarouselPrevious className="-left-10 lg:-left-12" />
+            <CarouselNext className="-right-10 lg:-right-12" />
+          </Carousel>
+        </div>
       </main>
-    </div>
+      </div>
     </AIAnalysisProvider>
   );
 }

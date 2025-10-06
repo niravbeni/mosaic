@@ -10,7 +10,7 @@ interface StrengthHeatmapProps {
 export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="h-[498px] flex items-center justify-center text-muted-foreground">
+      <div className="h-full min-h-[400px] flex items-center justify-center text-muted-foreground">
         No data available
       </div>
     );
@@ -23,7 +23,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   // Additional guard: ensure we have both categories and offers
   if (categories.length === 0 || offers.length === 0) {
     return (
-      <div className="h-[498px] flex items-center justify-center text-muted-foreground">
+      <div className="h-full min-h-[400px] flex items-center justify-center text-muted-foreground">
         Insufficient data for heatmap
       </div>
     );
@@ -44,7 +44,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
   }));
   
   return (
-    <div className="h-[498px]">
+    <div className="h-full min-h-[400px] md:min-h-[600px] lg:min-h-[400px]">
       <ResponsiveHeatMap
         data={heatmapData}
         margin={{ top: 160, right: 60, bottom: 54, left: 140 }}
