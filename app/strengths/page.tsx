@@ -314,16 +314,16 @@ export default function StrengthsPage() {
             {/* Slide 1: Category Strengths + Category Rankings */}
             <CarouselItem className="h-full">
               <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
-                <div className="container mx-auto h-full min-h-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full min-h-0">
-                    <Card className="lg:col-span-2 flex flex-col min-h-0 overflow-hidden">
-                      <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
+                <div className="container mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                    <Card className="lg:col-span-2">
+                      <CardHeader className="pb-2 sm:pb-4">
                         <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Category Strengths</CardTitle>
                         <CardDescription className="text-xs sm:text-sm whitespace-nowrap">
                           Overall IDEO strengths by category
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 min-h-0 overflow-hidden">
+                      <CardContent>
                         <CategoryRadar
                           data={categoryMetrics}
                           onCategoryClick={handleCategoryClick}
@@ -332,14 +332,14 @@ export default function StrengthsPage() {
                       </CardContent>
                     </Card>
                     
-                    <Card className="flex flex-col min-h-0 overflow-hidden">
-                      <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
+                    <Card>
+                      <CardHeader className="pb-2 sm:pb-4">
                         <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Category Rankings</CardTitle>
                         <CardDescription className="text-xs sm:text-sm whitespace-nowrap">
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 min-h-0 overflow-hidden">
+                      <CardContent>
                         <RankedList
                           data={categoryMetrics}
                           nameKey="category"
@@ -356,10 +356,10 @@ export default function StrengthsPage() {
             {/* Slide 2: Offers + Offer Rankings */}
             <CarouselItem className="h-full">
               <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
-                <div className="container mx-auto h-full min-h-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full min-h-0">
-                    <Card className="lg:col-span-2 flex flex-col min-h-0 overflow-hidden">
-                      <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
+                <div className="container mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                    <Card className="lg:col-span-2">
+                      <CardHeader className="pb-2 sm:pb-4">
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
                           <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Offers in</CardTitle>
                           <Select value={selectedCategory || undefined} onValueChange={setSelectedCategory}>
@@ -379,21 +379,21 @@ export default function StrengthsPage() {
                           Strength breakdown by offer
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 min-h-0 overflow-hidden">
+                      <CardContent>
                         <OfferRadar
                           data={offerMetrics}
                         />
                       </CardContent>
                     </Card>
                     
-                    <Card className="flex flex-col min-h-0 overflow-hidden">
-                      <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
+                    <Card>
+                      <CardHeader className="pb-2 sm:pb-4">
                         <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Offer Rankings</CardTitle>
                         <CardDescription className="text-xs sm:text-sm whitespace-nowrap">
                           Ranked by strength index
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="flex-1 min-h-0 overflow-hidden">
+                      <CardContent>
                         <RankedList
                           data={offerMetrics}
                           nameKey="offer"
