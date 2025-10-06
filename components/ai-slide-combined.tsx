@@ -10,7 +10,7 @@ export function AISlideCombined() {
   const { analysis, isLoading, error, regenerate } = useAnalysis();
 
   return (
-    <Card className="w-full h-full flex flex-col min-h-0">
+    <Card className="w-full h-[500px] sm:h-[550px] md:h-[600px] flex flex-col">
       <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
           <div className="min-w-0">
@@ -34,7 +34,7 @@ export function AISlideCombined() {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="pt-2 pb-4 flex-1 overflow-hidden relative min-h-0">
+      <CardContent className="pt-2 pb-4 flex-1 overflow-hidden relative">
         {error && (
           <Alert variant="destructive" className="mb-4">
             <AlertCircle className="h-4 w-4" />

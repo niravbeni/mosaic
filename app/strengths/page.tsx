@@ -407,16 +407,16 @@ export default function StrengthsPage() {
             
             {/* Slide 3: Category × Offer Heatmap */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6">
-                <div className="container mx-auto h-full flex flex-col min-h-0">
-                  <Card className="flex-1 flex flex-col min-h-0 overflow-hidden">
-                    <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+                <div className="container mx-auto h-full">
+                  <Card className="h-auto">
+                    <CardHeader className="pb-2 sm:pb-4">
                       <CardTitle className="text-base sm:text-lg md:text-xl whitespace-nowrap">Category × Offer Heatmap</CardTitle>
                       <CardDescription className="text-xs sm:text-sm whitespace-nowrap">
                         Strength index across categories and offers
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1 pt-2 pb-4 min-h-0 overflow-auto">
+                    <CardContent className="pt-2 pb-4">
                       <StrengthHeatmap data={heatmapData} />
                     </CardContent>
                   </Card>
@@ -426,8 +426,8 @@ export default function StrengthsPage() {
             
             {/* Slide 4: Combined AI Analysis */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 flex flex-col min-h-0">
-                <div className="container mx-auto flex-1 min-h-0">
+              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+                <div className="container mx-auto">
                   <AISlideCombined />
                 </div>
               </div>
