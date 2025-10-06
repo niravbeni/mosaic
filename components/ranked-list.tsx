@@ -30,7 +30,7 @@ export function RankedList<T extends StrengthMetrics & { [key: string]: any }>({
     .sort((a, b) => b.strengthIndex - a.strengthIndex);
   
   return (
-    <div className="relative h-[400px] sm:h-[480px] md:h-[532px]">
+    <div className="relative h-full">
       <div className="space-y-1.5 sm:space-y-2 h-full overflow-y-auto pb-4 scrollbar-always-visible">
         {sortedData.map((item, index) => {
         const itemName = item[nameKey];

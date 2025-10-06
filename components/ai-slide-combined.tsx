@@ -10,16 +10,16 @@ export function AISlideCombined() {
   const { analysis, isLoading, error, regenerate } = useAnalysis();
 
   return (
-    <Card className="w-full h-[500px] sm:h-[600px] md:h-[648px] flex flex-col">
+    <Card className="w-full h-full flex flex-col min-h-0">
       <CardHeader className="pb-2 sm:pb-4 flex-shrink-0">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-          <div>
-            <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-              <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-              AI Analysis
+          <div className="min-w-0">
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl whitespace-nowrap">
+              <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="truncate">AI Analysis</span>
             </CardTitle>
-            <CardDescription className="text-xs sm:text-sm">
-              Comprehensive AI-generated insights on IDEO's performance
+            <CardDescription className="text-xs sm:text-sm whitespace-nowrap">
+              AI-generated insights
             </CardDescription>
           </div>
           <Button
@@ -27,7 +27,7 @@ export function AISlideCombined() {
             disabled={isLoading}
             variant="outline"
             size="sm"
-            className="cursor-pointer w-full sm:w-auto"
+            className="cursor-pointer w-full sm:w-auto flex-shrink-0"
           >
             <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             {isLoading ? 'Analysing...' : 'Regenerate'}
