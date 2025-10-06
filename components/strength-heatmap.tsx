@@ -49,7 +49,7 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
         data={heatmapData}
         margin={{ top: 160, right: 60, bottom: 54, left: 140 }}
         valueFormat=">-.0f"
-        forceSquare={false}
+        forceSquare={true}
         axisTop={{
           tickSize: 5,
           tickPadding: 5,
