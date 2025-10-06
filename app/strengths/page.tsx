@@ -313,7 +313,7 @@ export default function StrengthsPage() {
           <CarouselContent className="h-full">
             {/* Slide 1: Category Strengths + Category Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
                 <div className="container mx-auto h-full min-h-0">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full min-h-0">
                     <Card className="lg:col-span-2 flex flex-col min-h-0 overflow-hidden">
@@ -355,7 +355,7 @@ export default function StrengthsPage() {
             
             {/* Slide 2: Offers + Offer Rankings */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
                 <div className="container mx-auto h-full min-h-0">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 h-full min-h-0">
                     <Card className="lg:col-span-2 flex flex-col min-h-0 overflow-hidden">
@@ -407,7 +407,7 @@ export default function StrengthsPage() {
             
             {/* Slide 3: Category × Offer Heatmap */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
                 <div className="container mx-auto h-full">
                   <Card className="h-auto">
                     <CardHeader className="pb-2 sm:pb-4">
@@ -426,7 +426,7 @@ export default function StrengthsPage() {
             
             {/* Slide 4: Combined AI Analysis */}
             <CarouselItem className="h-full">
-              <div className="h-full px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 overflow-auto">
+              <div className="h-full pl-10 pr-10 sm:pl-12 sm:pr-12 md:pl-16 md:pr-16 py-3 sm:py-4 md:py-6 overflow-auto">
                 <div className="container mx-auto">
                   <AISlideCombined />
                 </div>
