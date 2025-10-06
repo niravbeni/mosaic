@@ -17,16 +17,15 @@ export function Navbar({ onDatasetLoaded }: NavbarProps) {
     <header className="border-b">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold">IDEO Mosaic</h1>
+          <h1 className="text-2xl font-bold">
+            <span className="text-[#F87700]">IDEO</span> Mosaic
+          </h1>
           
           <nav className="flex items-center gap-2">
             <Link href="/strengths">
               <Button
-                variant="outline"
+                variant={pathname === '/strengths' ? 'default' : 'outline'}
                 size="sm"
-                className={`cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${
-                  pathname === '/strengths' ? 'bg-gray-100 dark:bg-gray-800' : ''
-                }`}
               >
                 IDEO Strengths
               </Button>
@@ -34,11 +33,8 @@ export function Navbar({ onDatasetLoaded }: NavbarProps) {
             
             <Link href="/clients">
               <Button
-                variant="outline"
+                variant={pathname === '/clients' ? 'default' : 'outline'}
                 size="sm"
-                className={`cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${
-                  pathname === '/clients' ? 'bg-gray-100 dark:bg-gray-800' : ''
-                }`}
               >
                 Clients
               </Button>

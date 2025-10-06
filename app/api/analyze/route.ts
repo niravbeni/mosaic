@@ -19,10 +19,17 @@ export async function POST(req: NextRequest) {
     // Prepare data summary for AI analysis
     const dataSummary = prepareDataSummary(dataset);
 
-    // Call AI with medium reasoning effort for analysis
-    const response = await openai.responses.create({
-      model: 'gpt-4o-mini',
-      input: `You are an expert business analyst. Analyze the following IDEO business data and provide a structured analysis.
+    // Call AI for analysis using gpt-5-mini
+    const response = await openai.chat.completions.create({
+      model: 'gpt-5-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are an expert business analyst. Analyze business data and provide structured analysis in valid JSON format only.'
+        },
+        {
+          role: 'user',
+          content: `Analyze the following IDEO business data and provide a structured analysis.
 
 Return your response as a valid JSON object with this exact structure:
 {
@@ -37,18 +44,19 @@ Return your response as a valid JSON object with this exact structure:
 Data Summary:
 ${dataSummary}
 
-IMPORTANT: Return ONLY valid JSON, no markdown formatting, no code blocks, no additional text.`,
-      reasoning: { effort: 'medium' },
-      text: { verbosity: 'medium' },
+IMPORTANT: Return ONLY valid JSON, no markdown formatting, no code blocks, no additional text.`
+        }
+      ],
     });
 
     // Parse the JSON response
+    const responseText = response.choices[0].message.content || '';
     let analysisData;
     try {
-      analysisData = JSON.parse(response.output_text);
+      analysisData = JSON.parse(responseText);
     } catch (parseError) {
       // If JSON parsing fails, try to extract JSON from markdown code blocks
-      const jsonMatch = response.output_text.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/);
+      const jsonMatch = responseText.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/);
       if (jsonMatch) {
         analysisData = JSON.parse(jsonMatch[1]);
       } else {
@@ -58,8 +66,9 @@ IMPORTANT: Return ONLY valid JSON, no markdown formatting, no code blocks, no ad
 
     return NextResponse.json({
       analysis: analysisData,
-      reasoningTokens: (response.usage as any)?.reasoning_tokens || 0,
-      outputTokens: (response.usage as any)?.output_tokens || 0,
+      promptTokens: response.usage?.prompt_tokens || 0,
+      completionTokens: response.usage?.completion_tokens || 0,
+      totalTokens: response.usage?.total_tokens || 0,
     });
   } catch (error: any) {
     console.error('Error calling AI analysis:', error);

@@ -40,8 +40,8 @@ export function RankedList<T extends StrengthMetrics & { [key: string]: any }>({
           <Card
             key={itemName}
             className={`transition-all border-2 ${
-              isSelected ? 'border-primary shadow-lg' : 'border-border'
-            } ${onItemClick ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 hover:shadow-md' : ''}`}
+              isSelected ? 'border-[#F87700] shadow-lg bg-[#F87700]/5' : 'border-border'
+            } ${onItemClick ? 'cursor-pointer hover:bg-[#F87700]/10 hover:border-[#FFA040] hover:shadow-md' : ''}`}
             onClick={() => onItemClick?.(item)}
           >
             <CardContent className="p-4">

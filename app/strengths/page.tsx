@@ -263,7 +263,7 @@ export default function StrengthsPage() {
               variant={currentSlide === 0 ? 'default' : 'ghost'}
               size="sm"
               onClick={() => carouselApi?.scrollTo(0)}
-              className="text-xs"
+              className={`text-xs font-semibold ${currentSlide === 0 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
               Categories
             </Button>
@@ -271,7 +271,7 @@ export default function StrengthsPage() {
               variant={currentSlide === 1 ? 'default' : 'ghost'}
               size="sm"
               onClick={() => carouselApi?.scrollTo(1)}
-              className="text-xs"
+              className={`text-xs font-semibold ${currentSlide === 1 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
               Offers
             </Button>
@@ -279,7 +279,7 @@ export default function StrengthsPage() {
               variant={currentSlide === 2 ? 'default' : 'ghost'}
               size="sm"
               onClick={() => carouselApi?.scrollTo(2)}
-              className="text-xs"
+              className={`text-xs font-semibold ${currentSlide === 2 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
               Heatmap
             </Button>
@@ -287,7 +287,7 @@ export default function StrengthsPage() {
               variant={currentSlide === 3 ? 'default' : 'ghost'}
               size="sm"
               onClick={() => carouselApi?.scrollTo(3)}
-              className="text-xs"
+              className={`text-xs font-semibold ${currentSlide === 3 ? '' : 'text-[#F87700] hover:text-[#FFA040]'}`}
             >
               AI Analysis
             </Button>

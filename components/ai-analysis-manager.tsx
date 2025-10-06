@@ -57,8 +57,8 @@ export function AIAnalysisProvider({ dataset, children }: AIAnalysisProviderProp
       const data = await response.json();
       setAnalysis(data.analysis);
       setTokenUsage({
-        reasoning: data.reasoningTokens,
-        output: data.outputTokens,
+        reasoning: data.promptTokens || 0,
+        output: data.completionTokens || 0,
       });
 
       // Store analysis with dataset timestamp
@@ -66,8 +66,8 @@ export function AIAnalysisProvider({ dataset, children }: AIAnalysisProviderProp
         timestamp: dataset.meta.lastUpdated,
         analysis: data.analysis,
         tokenUsage: {
-          reasoning: data.reasoningTokens,
-          output: data.outputTokens,
+          reasoning: data.promptTokens || 0,
+          output: data.completionTokens || 0,
         },
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(analysisData));

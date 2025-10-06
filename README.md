@@ -137,7 +137,7 @@ mosaic/
 ### AI Analysis Settings
 
 The AI analysis uses the following configuration:
-- **Model**: `gpt-4o-mini`
+- **Model**: `gpt-5-mini`
 - **Reasoning Effort**: `medium` (balances speed and quality)
 - **Text Verbosity**: `medium` (balanced output length)
 

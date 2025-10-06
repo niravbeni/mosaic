@@ -77,7 +77,6 @@ export function CsvUpload({ onDatasetLoaded }: CsvUploadProps) {
         onClick={() => fileInputRef.current?.click()}
         variant="outline"
         size="sm"
-        className="cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
       >
         <Upload className="mr-2 h-4 w-4" />
         Upload CSV

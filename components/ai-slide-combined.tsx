@@ -44,7 +44,7 @@ export function AISlideCombined() {
 
         {isLoading && (
           <div className="flex flex-col items-center justify-center h-full space-y-4">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#F87700]"></div>
             <p className="text-sm text-muted-foreground">
               AI agent is analysing your data...
             </p>
@@ -57,7 +57,7 @@ export function AISlideCombined() {
               {/* Executive Summary Section */}
               <section>
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="h-5 w-5 text-primary" />
+                  <Sparkles className="h-5 w-5 text-[#F87700]" />
                   <h3 className="text-xl font-semibold">Executive Summary</h3>
                 </div>
                 <p className="text-base leading-relaxed">
@@ -134,13 +134,13 @@ export function AISlideCombined() {
               {/* Recommendations Section */}
               <section>
                 <div className="flex items-center gap-2 mb-3">
-                  <Lightbulb className="h-5 w-5 text-yellow-600" />
+                  <Lightbulb className="h-5 w-5 text-[#F87700]" />
                   <h3 className="text-xl font-semibold">Recommendations</h3>
                 </div>
                 <ul className="space-y-3">
                   {analysis.recommendations.map((recommendation, index) => (
                     <li key={index} className="flex gap-3 p-3 rounded-lg bg-secondary/50">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F87700] text-white flex items-center justify-center text-sm font-semibold">
                         {index + 1}
                       </span>
                       <span className="flex-1 pt-0.5 text-sm">{recommendation}</span>

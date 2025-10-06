@@ -60,9 +60,8 @@ export function StrengthHeatmap({ data }: StrengthHeatmapProps) {
           tickRotation: 0,
         }}
         colors={{
-          type: 'diverging',
-          scheme: 'red_yellow_green',
-          divergeAt: 0.5,
+          type: 'sequential',
+          scheme: 'oranges',
           minValue: 0,
           maxValue: 100,
         }}
