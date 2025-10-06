@@ -1,36 +1,192 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IDEO Mosaic - Strength Visualization
+
+A Next.js application for visualizing IDEO's strengths by sector (categories) and offers. This tool parses CSV data of deals, calculates strength indices, and presents insights through interactive radar charts, ranked lists, and heatmaps.
+
+## Features
+
+### 📊 Data Management
+- **Pre-loaded Sample Data**: Sample dataset loads automatically on first visit
+- **CSV Upload**: Parse and validate deal data with required columns (Category, Offer-Sub Offer, Deal Stage)
+- **LocalStorage Persistence**: Data survives page reloads until a new file is uploaded
+- **Automatic Compression**: Uses lz-string for efficient storage
+
+### 📈 Strength Calculation
+The app calculates a configurable **Strength Index** based on:
+- **Sign Rate** = (Signed + Won) ÷ Total deals
+- **Delivery Rate** = Won ÷ (Signed + Won)
+- **Strength Index** = 100 × (w_sign × Sign Rate + w_deliver × Delivery Rate)
+
+Default weights are 0.5 each, configurable in `lib/strength-calculator.ts`.
+
+### 🎯 Visualizations
+
+1. **Category Radar Chart**: Overall IDEO strengths across all categories
+2. **Category Rankings**: Sortable list with metrics (deals, sign%, deliver%, strength index)
+3. **Offer Drill-down**: Click any category to see offer-level breakdown
+4. **Offer Rankings**: Detailed metrics for each offer within selected category
+5. **Category × Offer Heatmap**: Complete matrix view of all combinations
+6. **AI-Powered Analysis**: AI-generated executive summary and SWOT analysis of IDEO's performance
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Charts**: Nivo (@nivo/radar, @nivo/heatmap)
+- **CSV Parsing**: PapaParse
+- **Data Storage**: LocalStorage with lz-string compression
+- **AI Integration**: OpenAI for intelligent analysis
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Set up environment variables:
+   
+   Create a `.env.local` file in the root directory:
+   ```bash
+   OPENAI_API_KEY=your-openai-api-key-here
+   ```
+   
+   Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+### Building for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app automatically loads sample data on first visit, so you can start exploring immediately!
 
-## Deploy on Vercel
+1. **Explore Pre-loaded Data**: Sample data is automatically loaded on first visit
+2. **View Categories**: See overall category strengths in radar chart and ranked list
+3. **Drill Down**: Click any category to explore offers within it
+4. **Analyse Patterns**: Use the heatmap to identify strengths across all combinations
+5. **AI Analysis**: Navigate to the 4th slide for AI-powered insights and SWOT analysis
+6. **Upload Your Own CSV**: Click "Upload CSV" in the navbar to replace with your own dataset
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### CSV Format
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Your CSV must include these columns:
+- `Category` - Sector or category name
+- `Offer-Sub Offer` - Specific offer/service name  
+- `Deal Stage` - Current stage of the deal
+
+Deal stages are mapped as:
+- **Won/Closed Won** → Delivered
+- **Qualified/Prospecting** → Signed but not yet won
+- **Cancelled/Lost** → Not successful
+
+### Sample CSV
+
+```csv
+Category,Offer-Sub Offer,Deal Stage
+Design,UX Research,Won
+Design,UI Design,Qualified
+Strategy,Business Strategy,Prospecting
+Technology,AI Development,Closed Won
+Design,UX Research,Lost
+```
+
+## Project Structure
+
+```
+mosaic/
+├── app/
+│   ├── clients/          # Clients page (placeholder)
+│   ├── strengths/        # Main strengths visualization page
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── ui/               # shadcn/ui components
+│   ├── category-radar.tsx
+│   ├── offer-radar.tsx
+│   ├── ranked-list.tsx
+│   ├── strength-heatmap.tsx
+│   ├── ai-analysis.tsx   # AI analysis component
+│   ├── csv-upload.tsx
+│   └── navbar.tsx
+├── lib/
+│   ├── types.ts          # TypeScript interfaces
+│   ├── strength-calculator.ts  # Core calculation logic
+│   ├── storage.ts        # LocalStorage utilities
+│   └── utils.ts          # General utilities
+└── README.md
+```
+
+## Configuration
+
+### AI Analysis Settings
+
+The AI analysis uses the following configuration:
+- **Model**: `gpt-4o-mini`
+- **Reasoning Effort**: `medium` (balances speed and quality)
+- **Text Verbosity**: `medium` (balanced output length)
+
+To modify these settings, edit `/app/api/analyze/route.ts`:
+
+```typescript
+const response = await openai.responses.create({
+  model: 'gpt-4o-mini',
+  reasoning: { effort: 'medium' },  // Options: minimal, low, medium, high
+  text: { verbosity: 'medium' },    // Options: low, medium, high
+});
+```
+
+### Adjusting Strength Weights
+
+Edit `lib/strength-calculator.ts`:
+
+```typescript
+export const STRENGTH_WEIGHTS = {
+  signRate: 0.5,      // Weight for sign rate (0-1)
+  deliveryRate: 0.5,  // Weight for delivery rate (0-1)
+};
+```
+
+### Customizing Deal Stage Mappings
+
+Modify the `mapDealStage()` function in `lib/strength-calculator.ts` to match your organization's stage names.
+
+## Development
+
+### Adding New Components
+
+shadcn/ui components can be added with:
+
+```bash
+npx shadcn@latest add [component-name]
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## License
+
+Private - IDEO Internal Use
+
+## Support
+
+For questions or issues, contact the development team.
