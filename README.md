@@ -145,7 +145,7 @@ To modify these settings, edit `/app/api/analyze/route.ts`:
 
 ```typescript
 const response = await openai.responses.create({
-  model: 'gpt-4o-mini',
+  model: 'gpt-5-mini',
   reasoning: { effort: 'medium' },  // Options: minimal, low, medium, high
   text: { verbosity: 'medium' },    // Options: low, medium, high
 });
@@ -182,6 +182,39 @@ npx shadcn@latest add [component-name]
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
+
+## Deployment on Vercel
+
+### Prerequisites
+1. A [Vercel account](https://vercel.com)
+2. An OpenAI API key
+
+### Steps to Deploy
+
+1. **Connect your GitHub repository to Vercel**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "New Project"
+   - Import your GitHub repository
+
+2. **Configure Environment Variables**
+   - In your Vercel project settings, go to "Environment Variables"
+   - Add the following variable:
+     - `OPENAI_API_KEY`: Your OpenAI API key
+
+3. **Deploy**
+   - Vercel will automatically detect Next.js and deploy
+   - Your app will be live at `https://your-project.vercel.app`
+
+### Environment Variables
+
+Copy `.env.example` to `.env.local` and fill in your values:
+
+```bash
+cp .env.example .env.local
+```
+
+Required variables:
+- `OPENAI_API_KEY` - OpenAI API key for AI analysis features
 
 ## License
 
